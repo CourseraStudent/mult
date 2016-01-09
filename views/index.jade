@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+	//iframe(width="560", height="315", src="http://www.youtube.com/embed/jofNR_WkoCE", allowfullscreen='true')
+	iframe(width="560", height="315", src="videos/Disney/В%20стране%20невыученных%20уроков.mp4", allowfullscreen='true')
+
+	div.tabbable.dirTabs
+		ul.nav.nav-tabs
+			each dir, index in dirs
+				li(class= index===0 ? 'active' : '')
+					a(href="#tab" + index, data-toggle="tab")=dir
+
+	
+	div.tab-content
+		each dir, index in dirs
+			div(id="tab" + index, class=index===0 ? 'tab-pane active' : 'tab-pane')
+				ul.nav.nav-pills.nav-stacked
+					- var fileIndex = 1;
+					each val in files
+						- if(val.directory == dir) {
+						li
+							p #{fileIndex}: 
+								a(href="videos/" + val.directory + "/" + val.file + '.mp4')= val.file
+						- fileIndex ++;
+						- }
+
+	//ul.nav.nav-pills.nav-stacked
+	//	each val, index in files
+	//		li
+	//			p #{index}:
+	//				a(href="videos/" + val.directory + "/" + val.file)= val.file
