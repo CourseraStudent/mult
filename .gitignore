@@ -4,3 +4,5 @@
 # ignore node.js modules
 /node_modules
 
+# ignore MAC OS files
+.DS_Store
